@@ -4,28 +4,26 @@
 alert("Welcome to my site")
 </script>
 
-<div class = "TestRotator">
-<img src="https://secure.static.tumblr.com/29d461cdd1b7c91f7e1082694676c1bd/cukml9z/1gdnpjlgg/tumblr_static_tumblr_static__640.jpg" alt="rotating" width="250" height="232" id="rotator">
-<script type="text/javascript">
-(function () {
-    var rotator = document.getElementById('rotator'); // change to match image ID
-    var folder = "Downloads";
-    var delayInSeconds = 5;
-    // set number of seconds delay
-    // list image names
-    var images = ['image2.png', 'image3.png', 'image4.png'];
-    var num = 0;
-    var changeImage = function () {
-        var len = images.length;
-        rotator.src = imageDir + images[num++];
-        if (num == len) {
-            num = 0;
-        }
-    };
-    setInterval(changeImage, delayInSeconds * 1000);
-})();
-</script>
-</div>
+
+ $(function() {
+var body = $(‘body’);
+var backgrounds = new Array(
+‘url(http://data.whicdn.com/images/274380986/superthumb.jpg)’,
+‘url(https://static.tumblr.com/131b97d5dba703fddce9c3aa86ff31f8/mfctfmj/hkQn75qsp/tumblr_static_c73uvdly9y8ks4wk4s0kkgo4k_640_v2.jpg)’
+);
+var current = 0;
+
+function nextBackground() {
+body.css(
+‘background’,
+backgrounds[current = ++current % backgrounds.length]
+);
+
+setTimeout(nextBackground, 10000);
+}
+setTimeout(nextBackground, 10000);
+body.css(‘background’, backgrounds[0]);
+});
 
 
 
